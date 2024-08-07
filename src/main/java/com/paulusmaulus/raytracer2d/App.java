@@ -6,7 +6,7 @@ import javax.swing.JFrame;
  * Hello world!
  *
  */
-public class App extends JFrame implements Runnable {
+public final class App extends JFrame implements Runnable {
 
     public App() {
         super();
