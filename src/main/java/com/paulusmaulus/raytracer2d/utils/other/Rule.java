@@ -1,5 +1,5 @@
 package com.paulusmaulus.raytracer2d.utils.other;
 
-public class Script {
+public class Rule {
     
 }
