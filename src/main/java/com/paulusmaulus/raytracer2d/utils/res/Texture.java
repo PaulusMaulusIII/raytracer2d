@@ -1,5 +1,5 @@
 package com.paulusmaulus.raytracer2d.utils.res;
 
-public class Script {
+public class Texture {
     
 }

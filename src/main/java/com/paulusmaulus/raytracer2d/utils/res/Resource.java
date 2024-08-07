@@ -4,8 +4,11 @@ import java.io.File;
 
 public abstract class Resource extends File {
 
-    public Resource(String pathname) {
+    public final String name;
+
+    public Resource(String pathname, String name) {
         super(pathname);
+        this.name = name;
     }
 
 }
