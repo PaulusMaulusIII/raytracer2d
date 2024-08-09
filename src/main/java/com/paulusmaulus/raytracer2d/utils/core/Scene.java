@@ -3,6 +3,7 @@ package com.paulusmaulus.raytracer2d.utils.core;
 import java.util.List;
 
 import com.paulusmaulus.raytracer2d.interactables.Interactable;
+import com.paulusmaulus.raytracer2d.utils.rendering.Renderable;
 import com.paulusmaulus.raytracer2d.utils.res.Audio;
 import com.paulusmaulus.raytracer2d.utils.res.Texture;
 
@@ -12,6 +13,7 @@ public class Scene {
     private Texture background;
     private List<Audio> audios;
     private List<Interactable> interactables;
+    private List<Renderable> renderables;
 
     public Scene(String name) {
         super();
@@ -57,10 +59,15 @@ public class Scene {
         this.interactables.addAll(List.of(interactables));
     }
 
-    public Interactable getInteractable(String name) {
-        for (Interactable interactable : interactables)
-            if (interactable.name.equals(name))
-                return interactable;
-        throw new java.lang.IndexOutOfBoundsException();
+    public List<Renderable> getRenderables() {
+        return renderables;
+    }
+
+    public void setRenderables(List<Renderable> renderables) {
+        this.renderables = renderables;
+    }
+
+    public void addRenderable(Renderable... renderables) {
+        this.renderables.addAll(List.of(renderables));
     }
 }

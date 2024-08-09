@@ -1,14 +1,14 @@
 package com.paulusmaulus.raytracer2d.interactables;
 
-import com.paulusmaulus.raytracer2d.utils.ray_tracing.Ray;
-import com.paulusmaulus.raytracer2d.utils.ray_tracing.RayHit;
+import com.paulusmaulus.raytracer2d.utils.math.Vector;
 
 public abstract class Interactable {
     public final String name;
+    public Vector anchor;
 
-    public Interactable(int id, String name) {
+    public Interactable(String name, Vector anchor) {
         this.name = name;
+        this.anchor = anchor;
     }
 
-    public abstract RayHit getIntersection(Ray ray);
 }
