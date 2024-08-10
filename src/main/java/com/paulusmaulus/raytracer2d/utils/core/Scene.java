@@ -2,8 +2,6 @@ package com.paulusmaulus.raytracer2d.utils.core;
 
 import java.util.List;
 
-import com.paulusmaulus.raytracer2d.interactables.Interactable;
-import com.paulusmaulus.raytracer2d.utils.rendering.Renderable;
 import com.paulusmaulus.raytracer2d.utils.res.Audio;
 import com.paulusmaulus.raytracer2d.utils.res.Texture;
 

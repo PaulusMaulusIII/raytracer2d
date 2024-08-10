@@ -1,0 +1,30 @@
+@Override
+public void repaint() {
+    Graphics gfx = getGraphics();
+    double hres = (double) tileMap.width / getWidth();
+    int resWidth = (int) (getWidth() * hres);
+
+    double vres = (double) tileMap.height / getHeight();
+    int resHeight = (int) (getHeight() * vres);
+
+    double res = Math.max(vres, hres);
+    int blockSize = (int) (1 / res);
+
+    if (gfx != null) {
+        for (int y = 0; y < getHeight(); y += blockSize) {
+            for (int x = 0; x < getWidth(); x += blockSize) {
+                int pixelY = (int) (y * res);
+                int pixelX = (int) (x * res);
+                
+                if (pixelY >= resHeight)
+                    break;
+                if (pixelX >= resWidth)
+                    break;
+
+                gfx.setColor(tileMap.getColor(pixelX, pixelY).toAWT());
+                gfx.fillRect(x, y, blockSize, blockSize);
+            }
+        }
+        gfx.dispose();
+    }
+}

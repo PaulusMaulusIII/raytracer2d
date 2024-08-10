@@ -1,4 +1,4 @@
-package com.paulusmaulus.raytracer2d.interactables;
+package com.paulusmaulus.raytracer2d.utils.core;
 
 import com.paulusmaulus.raytracer2d.utils.math.Vector;
 

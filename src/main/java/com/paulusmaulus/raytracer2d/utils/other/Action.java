@@ -1,5 +1,5 @@
 package com.paulusmaulus.raytracer2d.utils.other;
 
-public class Action {
-    
+public interface Action extends Runnable {
+
 }

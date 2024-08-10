@@ -84,9 +84,11 @@ class PhysiscsEngine {
 
     void addRule(Rule rule)
     void run() {
-        foreach(rule : rules)
+        foreach(affectedBody in scene)
+            foreach(rule : rules)
             if (rule.applies())
-                rule.runMods()
+                foreach(mod : rule.getModifications())
+                    mod.apply(affectedBody)
     }
 }
 ```

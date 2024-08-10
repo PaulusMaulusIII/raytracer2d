@@ -1,5 +1,7 @@
 package com.paulusmaulus.raytracer2d.UI;
 
-public abstract class UIElement {
+import com.paulusmaulus.raytracer2d.utils.core.Renderable;
+
+public abstract class UIElement implements Renderable {
 
 }

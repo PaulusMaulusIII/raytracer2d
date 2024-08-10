@@ -3,17 +3,17 @@ package com.paulusmaulus.raytracer2d.utils.ray_tracing;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.paulusmaulus.raytracer2d.utils.core.Intersectable;
 import com.paulusmaulus.raytracer2d.utils.math.Vector;
-import com.paulusmaulus.raytracer2d.utils.rendering.Renderable;
 
 public class Ray {
     Vector origin;
     Vector direction;
 
-    public List<RayHit> cast(List<Renderable> renderables) {
+    public List<RayHit> cast(List<Intersectable> intersectables) {
         List<RayHit> hits = new ArrayList<>();
-        for (Renderable renderable : renderables) {
-            RayHit intersection = renderable.getIntersection(this);
+        for (Intersectable intersectable : intersectables) {
+            RayHit intersection = intersectable.getIntersection(this);
             if (intersection != null)
                 hits.add(intersection);
         }
