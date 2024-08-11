@@ -4,6 +4,7 @@ import com.paulusmaulus.raytracer2d.assets.gameObjects.Player;
 import com.paulusmaulus.raytracer2d.core.Game;
 import com.paulusmaulus.raytracer2d.utils.core.Scene;
 import com.paulusmaulus.raytracer2d.utils.math.Vector;
+import com.paulusmaulus.raytracer2d.utils.res.Audio;
 
 public class App {
     public static void main(String[] args) {
@@ -17,10 +18,13 @@ public class App {
 
         Scene scene = new Scene("Test");
         scene.add(player);
-        game.getSceneManager().setCurrentScene(scene);
+        //game.getSceneManager().setCurrentScene(scene);
+
+        game.getResourceManager().addAudio(
+                new Audio("src\\main\\java\\com\\paulusmaulus\\raytracer2d\\assets\\sounds\\example.wav", "Example"));
 
         game.getMainLoop().add(() -> {
-            game.getAudioPlayer().play("Example");
+            game.getAudioPlayer().play(game.getResourceManager().getAudio("Example"));
         });
 
         game.run();
