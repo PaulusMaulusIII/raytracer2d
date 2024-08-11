@@ -18,7 +18,7 @@ public class App {
 
         Scene scene = new Scene("Test");
         scene.add(player);
-        //game.getSceneManager().setCurrentScene(scene);
+        // game.getSceneManager().setCurrentScene(scene);
 
         game.getResourceManager().addAudio(
                 new Audio("src\\main\\java\\com\\paulusmaulus\\raytracer2d\\assets\\sounds\\example.wav", "Example"));

@@ -21,7 +21,8 @@ public class PhysicsEngine {
     public void add(Rule... rules) {
         if (this.rules != null)
             this.rules.addAll(List.of(rules));
-        else throw new NullPointerException();
+        else
+            throw new NullPointerException();
     }
 
     public List<Rule> getRules() {

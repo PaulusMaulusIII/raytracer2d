@@ -12,7 +12,8 @@ public abstract class UI {
     public void add(UIElement... elements) {
         if (this.elements != null)
             this.elements.addAll(List.of(elements));
-        else throw new NullPointerException();
+        else
+            throw new NullPointerException();
     }
 
     public List<UIElement> getElements() {

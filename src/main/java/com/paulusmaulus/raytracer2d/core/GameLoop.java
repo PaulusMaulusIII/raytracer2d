@@ -11,7 +11,8 @@ public class GameLoop {
     public void add(Action... actions) {
         if (this.actions != null)
             this.actions.addAll(List.of(actions));
-        else throw new NullPointerException();
+        else
+            throw new NullPointerException();
     }
 
     public List<Action> getActions() {

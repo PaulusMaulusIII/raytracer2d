@@ -18,7 +18,8 @@ public class RenderLayer {
     public void add(Renderable... renderables) {
         if (this.renderables != null)
             this.renderables.addAll(List.of(renderables));
-        else throw new NullPointerException();
+        else
+            throw new NullPointerException();
     }
 
     public List<Renderable> getRenderables() {
