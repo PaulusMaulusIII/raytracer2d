@@ -7,9 +7,10 @@ import com.paulusmaulus.raytracer2d.utils.res.Audio;
 
 public class AudioPlayer implements LineListener {
 
-    boolean isPlaybackCompleted;
+    boolean isPlaybackCompleted = true;
 
     public void play(Audio audio) {
+
         try {
             // Load the audio file as a Clip
             File audioFile = new File(audio.getPath());
@@ -17,23 +18,16 @@ public class AudioPlayer implements LineListener {
             Clip audioClip = AudioSystem.getClip();
             audioClip.addLineListener(this);
             audioClip.open(audioStream);
-
-            // Start playing the audio
-            audioClip.start();
-            System.out.println("Playing: " + audio.getName());
-
-            // Wait for the playback to complete
-            while (!isPlaybackCompleted) {
-                try {
-                    Thread.sleep(100);
-                } catch (InterruptedException ex) {
-                    ex.printStackTrace();
-                }
+            if (isPlaybackCompleted) {
+                // Start playing the audio
+                audioClip.start();
+                System.out.println("Playing: " + audio.getName());
+            } else {
+                // Close resources
+                audioClip.close();
+                audioStream.close();
             }
 
-            // Close resources
-            audioClip.close();
-            audioStream.close();
         } catch (UnsupportedAudioFileException | LineUnavailableException | IOException ex) {
             ex.printStackTrace();
         }

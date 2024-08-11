@@ -3,19 +3,18 @@ package com.paulusmaulus.raytracer2d.core;
 import java.util.LinkedList;
 import java.util.List;
 
-import com.paulusmaulus.raytracer2d.utils.core.PhysicsAffected;
 import com.paulusmaulus.raytracer2d.utils.interfaces.Modification;
 import com.paulusmaulus.raytracer2d.utils.interfaces.Rule;
 
 public class PhysicsEngine {
     List<Rule> rules = new LinkedList<>();
 
-    public void applyRules(PhysicsAffected physicsAffected) {
+    public void run() {
         if (rules != null)
             for (Rule rule : rules)
                 if (rule.applies())
                     for (Modification modification : rule.getModifications())
-                        modification.run(physicsAffected);
+                        modification.run();
     }
 
     public void add(Rule... rules) {

@@ -8,6 +8,8 @@ public interface Renderable {
 
     public Color getColor(Vector pos);
 
+    public void setPos(Vector pos);
+
     public Vector getPos();
 
     public RenderLayer getRenderLayer();

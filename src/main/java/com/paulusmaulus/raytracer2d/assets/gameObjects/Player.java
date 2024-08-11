@@ -25,8 +25,7 @@ public class Player extends GameObject implements Renderable, Collidable, Inters
 
     @Override
     public Vector getPos() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getPos'");
+        return anchor;
     }
 
     @Override
@@ -39,6 +38,11 @@ public class Player extends GameObject implements Renderable, Collidable, Inters
     public RayHit getIntersection(Ray ray) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getIntersection'");
+    }
+
+    @Override
+    public void setPos(Vector pos) {
+        this.anchor = pos;
     }
 
 }

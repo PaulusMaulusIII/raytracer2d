@@ -2,16 +2,14 @@ package com.paulusmaulus.raytracer2d.core;
 
 import javax.swing.JFrame;
 
-import com.paulusmaulus.raytracer2d.utils.core.Scene;
 import com.paulusmaulus.raytracer2d.utils.interfaces.Action;
 
 public final class Game extends JFrame implements Runnable {
 
-    private Scene currentScene;
+    private Renderer renderer;
 
     private AudioPlayer audioPlayer = new AudioPlayer();
     private GameLoop mainLoop = new GameLoop();
-    private InputHandler inputHandler = new InputHandler();
     private PhysicsEngine physicsEngine = new PhysicsEngine();
     private ResourceManager resourceManager = new ResourceManager();
     private SceneManager sceneManager = new SceneManager();
@@ -19,6 +17,7 @@ public final class Game extends JFrame implements Runnable {
 
     public Game() {
         super();
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
     public AudioPlayer getAudioPlayer() {
@@ -27,10 +26,6 @@ public final class Game extends JFrame implements Runnable {
 
     public GameLoop getMainLoop() {
         return mainLoop;
-    }
-
-    public InputHandler getInputHandler() {
-        return inputHandler;
     }
 
     public PhysicsEngine getPhysicsEngine() {
@@ -49,9 +44,17 @@ public final class Game extends JFrame implements Runnable {
         return uiSystem;
     }
 
+    public void setRenderer(Renderer renderer) {
+        this.renderer = renderer;
+    }
+
+    public Renderer getRenderer() {
+        return renderer;
+    }
+
     @Override
     public void repaint() {
-        Renderer.render(getGraphics(), currentScene);
+        getRenderer().render(getGraphics(), getSceneManager().getCurrentScene());
     }
 
     @Override
