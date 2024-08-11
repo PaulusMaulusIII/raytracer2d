@@ -1,5 +1,5 @@
 module com.paulusmaulus.raytracer2d {
-    requires java.desktop;
+    requires transitive java.desktop;
 
     exports com.paulusmaulus.raytracer2d;
 }

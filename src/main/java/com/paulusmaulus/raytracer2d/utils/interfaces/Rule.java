@@ -1,4 +1,4 @@
-package com.paulusmaulus.raytracer2d.utils.other;
+package com.paulusmaulus.raytracer2d.utils.interfaces;
 
 import java.util.List;
 

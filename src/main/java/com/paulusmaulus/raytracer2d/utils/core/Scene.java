@@ -10,27 +10,23 @@ public class Scene {
     public final String name;
 
     private Texture background;
-    private List<Audio> audios;
-    private List<GameObject> gameObjects;
-    private List<Collidable> collidables;
-    private List<Intersectable> intersectables;
-    private List<PhysicsAffected> physicsAffecteds;
-    private List<Renderable> renderables;
+    private List<Audio> audios = new LinkedList<>();;
+    private List<GameObject> gameObjects = new LinkedList<>();;
+    private List<Collidable> collidables = new LinkedList<>();;
+    private List<Intersectable> intersectables = new LinkedList<>();;
+    private List<PhysicsAffected> physicsAffecteds = new LinkedList<>();;
+    private List<Renderable> renderables = new LinkedList<>();;
 
     public Scene(String name) {
         super();
         this.name = name;
-        audios = new LinkedList<>();
-        gameObjects = new LinkedList<>();
-        collidables = new LinkedList<>();
-        physicsAffecteds = new LinkedList<>();
-        renderables = new LinkedList<>();
     }
 
     public void addAudio(Audio... audios) {
         if (this.audios != null)
             this.audios.addAll(List.of(audios));
-        throw new NullPointerException();
+        else
+            throw new NullPointerException();
     }
 
     public void add(GameObject gameObject) {
@@ -51,25 +47,29 @@ public class Scene {
     private void add(Collidable... collidables) {
         if (this.collidables != null)
             this.collidables.addAll(List.of(collidables));
-        throw new NullPointerException();
+        else
+            throw new NullPointerException();
     }
 
     private void add(Intersectable... intersectables) {
         if (this.intersectables != null)
             this.intersectables.addAll(List.of(intersectables));
-        throw new NullPointerException();
+        else
+            throw new NullPointerException();
     }
 
     private void add(PhysicsAffected... physicsAffecteds) {
         if (this.physicsAffecteds != null)
             this.physicsAffecteds.addAll(List.of(physicsAffecteds));
-        throw new NullPointerException();
+        else
+            throw new NullPointerException();
     }
 
     private void add(Renderable... renderables) {
         if (this.renderables != null)
             this.renderables.addAll(List.of(renderables));
-        throw new NullPointerException();
+        else
+            throw new NullPointerException();
     }
 
     public List<Audio> getAudios() {

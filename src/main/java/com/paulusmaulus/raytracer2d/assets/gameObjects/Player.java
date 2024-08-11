@@ -1,5 +1,6 @@
 package com.paulusmaulus.raytracer2d.assets.gameObjects;
 
+import com.paulusmaulus.raytracer2d.core.Game;
 import com.paulusmaulus.raytracer2d.utils.core.Collidable;
 import com.paulusmaulus.raytracer2d.utils.core.GameObject;
 import com.paulusmaulus.raytracer2d.utils.core.Intersectable;
@@ -12,8 +13,8 @@ import com.paulusmaulus.raytracer2d.utils.rendering.RenderLayer;
 
 public class Player extends GameObject implements Renderable, Collidable, Intersectable {
 
-    public Player(Vector anchor) {
-        super("Player", anchor);
+    public Player(Vector anchor, Game game) {
+        super("Player", anchor, game);
     }
 
     @Override
