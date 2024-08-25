@@ -3,7 +3,10 @@ plugins {
     application
     // Apply the Shadow plugin to create a fat JAR (all dependencies in one JAR).
     id("com.github.johnrengelman.shadow") version "8.1.1"
+    id("dev.hydraulic.conveyor") version "1.4"
 }
+
+version = "1.0"
 
 repositories {
     // Use Maven Central for resolving dependencies.
@@ -56,21 +59,12 @@ tasks.register<com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar>("fatJ
     mergeServiceFiles()
 }
 
-// Use jpackage to create an executable from the fat JAR.
-// Ensure you are using JDK 14 or higher as jpackage is part of the JDK.
 tasks.register<Exec>("packageExe") {
     dependsOn(tasks.named("fatJar"))
     group = "distribution"
     description = "Package the application as an executable using jpackage"
 
     commandLine(
-        "jpackage",
-        "--input", "${buildDir}/libs",
-        "--main-jar", "raytracer2d-all.jar",
-        "--main-class", application.mainClass.get(),
-        "--type", "exe",
-        "--dest", "${buildDir}/dist",
-        "--name", "RayTracer2D"
+        "conveyor --cache-dir=\"Y\\Hydraulic\\Cache\" --data-dir=\"Y\\Hydraulic\\Data\" --logs-dir=\"Y\\Hydraulic\\Logs\" make site"
     )
 }
-

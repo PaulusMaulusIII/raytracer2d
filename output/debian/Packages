@@ -1,0 +1,14 @@
+Architecture: amd64
+Built-With: Hydraulic Conveyor
+Depends: libxi6, zlib1g, libasound2 | liboss4-salsa-asound2, libx11-6, libgcc-s1, libxext6, libc6, libfreetype6, libxtst6, libxrender1, libstdc++6
+Description: Test
+Installed-Size: 78814
+Maintainer: <nobody@nowhere>
+Package: app
+Priority: optional
+Provides: app
+Section: misc
+Version: 1.0
+Filename: debian/app_1.0_amd64.deb
+Size: 34883532
+SHA256: 45f3fc238b4661fb64dcf4d05dbcbd71c363e2f654f14aaece5b11963dbc301e

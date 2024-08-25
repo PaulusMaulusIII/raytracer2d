@@ -1,0 +1,21 @@
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
+    <channel>
+        <title>Test Changelog</title>
+        <link>http://localhost:3000/appcast-aarch64.rss</link>
+        <description>Most recent changes with links to updates.</description>
+        <language>en</language>
+        <item>
+            <title>Version 1.0.0</title>
+            <link>http://localhost:3000/</link>
+            <sparkle:version>1.0.0</sparkle:version>
+            <description>
+                <![CDATA[ New release: version 1.0.0 ]]>
+            </description>
+            <pubDate>Sun, 25 Aug 2024 21:11:52 GMT</pubDate>
+            <enclosure url="http://localhost:3000/app-1.0-mac-aarch64.zip" 
+                       length="32215894" 
+                       type="application/octet-stream" 
+                       sparkle:edSignature="5E+qfK8lspi01cyn9EAnjah77/uqmC6OqpeAO5ddZFymBTRMKwiAB9Vez44cAnKtDlD6lXlt18Pq2qGou+XqDQ=="/>
+        </item>
+    </channel>
+</rss>
