@@ -1,5 +1,7 @@
 package raytracer2d.assets.gameObjects;
 
+import java.awt.Graphics2D;
+
 import raytracer2d.core.Game;
 import raytracer2d.utils.core.Collidable;
 import raytracer2d.utils.core.GameObject;
@@ -13,14 +15,19 @@ import raytracer2d.utils.rendering.RenderLayer;
 
 public class Player extends GameObject implements Renderable, Collidable, Intersectable {
 
+    Color color = Color.BLACK;
+
     public Player(Vector anchor, Game game) {
         super("Player", anchor, game);
     }
 
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
     @Override
     public Color getColor(Vector pos) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getColor'");
+        return color;
     }
 
     @Override
@@ -43,6 +50,19 @@ public class Player extends GameObject implements Renderable, Collidable, Inters
     @Override
     public void setPos(Vector pos) {
         this.anchor = pos;
+    }
+
+    @Override
+    public boolean visible(Vector pos) {
+        return true;
+    }
+
+    @Override
+    public void draw(Graphics2D gfx) {
+        if (visible(anchor)) {
+            gfx.setColor(getColor(anchor).toAWT());
+            gfx.fillOval((int) getPos().x - 25, (int) getPos().y - 25, 50, 50);
+        }
     }
 
 }
