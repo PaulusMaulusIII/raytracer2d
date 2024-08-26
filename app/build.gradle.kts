@@ -60,11 +60,10 @@ tasks.register<com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar>("fatJ
 }
 
 tasks.register<Exec>("packageExe") {
-    dependsOn(tasks.named("fatJar"))
+    dependsOn(tasks.named("jar"))
     group = "distribution"
-    description = "Package the application as an executable using jpackage"
 
     commandLine(
-        "conveyor --cache-dir=\"Y\\Hydraulic\\Cache\" --data-dir=\"Y\\Hydraulic\\Data\" --logs-dir=\"Y\\Hydraulic\\Logs\" make site"
+        "conveyor --cache-dir=\"Y\\Hydraulic\\Cache\" --data-dir=\"Y\\Hydraulic\\Data\" --logs-dir=\"Y\\Hydraulic\\Logs\" make site; ./output/npx serve ."
     )
 }
