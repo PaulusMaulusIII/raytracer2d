@@ -16,8 +16,10 @@ public interface Renderable {
 
     public Vector getPos();
 
+    public void setRenderLayer(RenderLayer renderLayer);
+
     public RenderLayer getRenderLayer();
 
-    public void draw(Graphics2D gfx);
+    public void draw(Graphics2D gfx, int minX, int minY, int maxX, int maxY);
 
 }

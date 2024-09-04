@@ -1,5 +1,6 @@
 package raytracer2d.utils.res;
 
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
@@ -7,7 +8,7 @@ import javax.imageio.ImageIO;
 
 import raytracer2d.utils.rendering.Color;
 
-public class Texture extends Resource {
+public abstract class Texture extends Resource {
 
     public final int width;
     public final int height;
@@ -34,6 +35,8 @@ public class Texture extends Resource {
             throw new Error("Encountered Error loading Texture");
         }
     }
+
+    public abstract void draw(Graphics2D buffer, int minX, int minY, int maxX, int maxY);
 
     public Color getColor(int x, int y) {
         return pixels[y][x];

@@ -3,29 +3,21 @@ package raytracer2d.utils.core;
 import java.util.LinkedList;
 import java.util.List;
 
-import raytracer2d.utils.res.Texture;
+import raytracer2d.utils.rendering.RenderLayer;
 
 public class Scene {
     public final String name;
 
-    private Texture background;
     private List<GameObject> gameObjects = new LinkedList<>();
     private List<Collidable> collidables = new LinkedList<>();
     private List<Intersectable> intersectables = new LinkedList<>();
     private List<PhysicsAffected> physicsAffecteds = new LinkedList<>();
-    private List<Renderable> renderables = new LinkedList<>();
+    private List<RenderLayer> renderLayers = new LinkedList<>();
+    private RenderLayer background;
 
     public Scene(String name) {
         super();
         this.name = name;
-    }
-
-    public Texture getBackground() {
-        return background;
-    }
-
-    public void setBackground(Texture background) {
-        this.background = background;
     }
 
     public List<Collidable> getCollidables() {
@@ -60,12 +52,12 @@ public class Scene {
         this.physicsAffecteds = physicsAffecteds;
     }
 
-    public List<Renderable> getRenderables() {
-        return renderables;
+    public List<RenderLayer> getRenderLayers() {
+        return renderLayers;
     }
 
-    public void setRenderables(List<Renderable> renderables) {
-        this.renderables = renderables;
+    public void setRenderables(List<RenderLayer> renderLayers) {
+        this.renderLayers = renderLayers;
     }
 
     public void add(GameObject gameObject) {
@@ -77,10 +69,6 @@ public class Scene {
                 add(((Collidable) gameObject));
             add(((PhysicsAffected) gameObject));
         }
-        if (gameObject instanceof Renderable)
-            add(((Renderable) gameObject));
-        if (gameObject instanceof Intersectable)
-            add(((Intersectable) gameObject));
     }
 
     private void add(Collidable... collidables) {
@@ -104,10 +92,24 @@ public class Scene {
             throw new NullPointerException();
     }
 
-    private void add(Renderable... renderables) {
-        if (this.renderables != null)
-            this.renderables.addAll(List.of(renderables));
-        else
+    public void add(RenderLayer... renderLayers) {
+        if (this.renderLayers != null) {
+            this.renderLayers.addAll(List.of(renderLayers));
+            for (RenderLayer renderLayer : renderLayers) {
+                if (renderLayer.isBackground() && background == null) {
+                    background = renderLayer;
+                } else {
+                    for (Renderable renderable : renderLayer.getRenderables())
+                        if (renderable instanceof Intersectable)
+                            add((Intersectable) renderable);
+                }
+            }
+
+        } else
             throw new NullPointerException();
+    }
+
+    public RenderLayer getBackground() {
+        return background;
     }
 }

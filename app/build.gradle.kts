@@ -6,7 +6,7 @@ plugins {
     id("dev.hydraulic.conveyor") version "1.4"
 }
 
-version = "1.0"
+version = "1.2"
 
 repositories {
     // Use Maven Central for resolving dependencies.
@@ -46,24 +46,11 @@ tasks.withType<com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar> {
     mergeServiceFiles()
 }
 
-// Optional: You can use this task to ensure your project builds a JAR with all dependencies.
-tasks.register<com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar>("fatJar") {
-    manifest {
-        attributes["Main-Class"] = application.mainClass.get()
-    }
-    from(sourceSets.main.get().output)
-    configurations = listOf(project.configurations.runtimeClasspath.get())
-    archiveBaseName.set("raytracer2d-all")
-    archiveClassifier.set("")
-    archiveVersion.set("")
-    mergeServiceFiles()
-}
-
 tasks.register<Exec>("packageExe") {
     dependsOn(tasks.named("jar"))
     group = "distribution"
 
     commandLine(
-        "conveyor --cache-dir=\"Y\\Hydraulic\\Cache\" --data-dir=\"Y\\Hydraulic\\Data\" --logs-dir=\"Y\\Hydraulic\\Logs\" make site; ./output/npx serve ."
+        "conveyor --cache-dir=\"Y\\Hydraulic\\Cache\" --data-dir=\"Y\\Hydraulic\\Data\" --logs-dir=\"Y\\Hydraulic\\Logs\" make site ; (cd output; npx serve .)"
     )
 }
